@@ -1,0 +1,70 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: #555555 url("./images/background.jpg") no-repeat center center fixed;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* NAV */
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  background-color: #111111;
+  height: 70px;
+  padding: 0 80px;
+}
+
+.navbar ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar a {
+  font-weight: bold;
+  font-size: 18px;
+  color: #bdc3c7;
+  text-decoration: none;
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #bdc3c7;
+  border-radius: 6px;
+}
+
+.navbar a:hover {
+  color: white;
+  cursor: pointer;
+  border: 1px solid white;
+}
+
+.navbarList {
+  display: flex;
+}
+
+/*HOMEPAGE*/
+
+.authForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.authForm > input{
+  min-width: 300px;
+}
+
+.alert {
+  color: red;
+  font-size: 20px;
+}
