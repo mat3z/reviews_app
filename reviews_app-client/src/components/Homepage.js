@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import MoviesList from '../containers/MoviesList'
+import SearchBar from '../containers/SearchBar';
 
 const Homepage = ({ currentUser }) => {
   if (!currentUser.isAuthenticated) {
@@ -12,7 +14,8 @@ const Homepage = ({ currentUser }) => {
   }
   return (
     <div>
-      <h1>YOU MADE IT</h1>
+      <SearchBar />
+      <MoviesList />
     </div>
   )
 };

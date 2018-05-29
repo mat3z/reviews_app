@@ -40,26 +40,30 @@ class AuthForm extends Component {
       <div>
         <div>
           <form onSubmit={this.handleSubmit} className='authForm'>
-            <h2>{heading}</h2>
+            <h1 className='headline'>{heading}</h1>
             {errors.message && (
               <div className='alert'>{errors.message}</div>
             )}
-            <label htmlFor="username">Username:</label>
+            {/*<label htmlFor="username">Username:</label>*/}
             <input
               type="text"
               id='username'
               name='username'
               onChange={this.handleChange}
               value={username}
+              placeholder='Username...'
+              className='userInputBox'
             />
-            <label htmlFor="password">Password:</label>
+            {/*<label htmlFor="password">Password:</label>*/}
             <input
               type="password"
               id='password'
               name='password'
               onChange={this.handleChange}
+              placeholder='Password...'
+              className='userInputBox'
             />
-            <button className='button' type='submit'>
+            <button className='submitButton' type='submit'>
               {buttonText}
             </button>
           </form>

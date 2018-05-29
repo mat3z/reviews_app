@@ -14,7 +14,15 @@ const Main = props => {
         <Route
           exact
           path='/'
-          render={props => <Homepage currentUser={currentUser} {...props} />} />
+          render={props => {
+            return(
+              <Homepage
+                currentUser={currentUser}
+                {...props}
+              />
+            )
+          }}
+        />
         <Route
           exact
           path='/signup'
@@ -25,7 +33,7 @@ const Main = props => {
                 errors={errors}
                 signUp
                 onAuth={authUser}
-                buttonText='Sign up'
+                buttonText='SIGN UP'
                 heading='Review best movies.'
                 {...props}
               />
@@ -41,7 +49,7 @@ const Main = props => {
                 removeError={removeError}
                 errors={errors}
                 onAuth={authUser}
-                buttonText='Log in'
+                buttonText='LOG IN'
                 heading='Welcome Back.'
                 {...props}
               />

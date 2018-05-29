@@ -5,23 +5,28 @@ body {
   top: 0;
   left: 0;
   z-index: -1;
-  background: #555555 url("./images/background.jpg") no-repeat center center fixed;
-  background-size: cover;
+  /*background: #555555 url("./images/background.jpg") no-repeat center center fixed;*/
+  /*background-size: cover;*/
+  background-color: #336B87;
   width: 100vw;
   height: 100vh;
+  color: #90AFC5;
 }
 
-/* NAV */
+/* NAVBAR */
 
 .navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   align-content: center;
-  background-color: #111111;
+  background-color: #2A3132;
   height: 70px;
-  padding: 0 80px;
+  box-shadow: 0 0 2em #763626;
 }
 
 .navbar ul {
@@ -33,12 +38,13 @@ body {
 .navbar a {
   font-weight: bold;
   font-size: 18px;
-  color: #bdc3c7;
+  color: #90AFC5;
+  /*color: #bdc3c7;*/
   text-decoration: none;
   padding: 10px;
   margin: 5px;
-  border: 1px solid #bdc3c7;
-  border-radius: 6px;
+  border: 1px solid #90AFC5;
+  /*border-radius: 6px;*/
 }
 
 .navbar a:hover {
@@ -51,20 +57,129 @@ body {
   display: flex;
 }
 
-/*HOMEPAGE*/
+/*HOMEPAGE, SIGNUP, LOGIN*/
 
 .authForm {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 100px;
 }
 
-.authForm > input{
-  min-width: 300px;
+.headline {
+  font-weight: normal;
+  font-size: 3.2em;
+  text-shadow: 1px 1px 10px #763626;
+}
+
+.userInputBox {
+  margin: 15px;
+  border: none;
+  box-shadow: 0 0px 14px 4px #763626;
+  padding: 10px 30px;
+  height: 50px;
+  font-size: 24pt;
+}
+
+.userInputBox:focus {
+  border: none;
+  box-shadow: inset 0 0 12px 2px #763626,  0 0px 14px 4px #763626;
+}
+
+.submitButton {
+  margin-top: 15px;
+  background-color: #2A3132;
+  color: #90AFC5;
+  border: none;
+  font-weight: bold;
+  font-size: 26px;
+  padding: 20px;
+  box-shadow: 0 0px 14px 1px #763626;
 }
 
 .alert {
   color: red;
   font-size: 20px;
+}
+
+/*SEARCH BAR*/
+
+.searchBar {
+  margin-top: 120px;
+  display: flex;
+  justify-content: center;
+}
+
+.queryBox {
+  height: 50px;
+  font-size: 24pt;
+}
+
+.searchBar input {
+  border: none;
+  box-shadow: 0 0px 14px 4px #763626;
+  padding: 10px 30px;
+}
+
+.searchBar input:focus {
+  border: none;
+  box-shadow: inset 0 0 12px 2px #763626,  0 0px 14px 4px #763626;
+}
+
+/*.searchBar button {*/
+/*background-color: white;*/
+/*border: none;*/
+/*height: 70px;*/
+/*font-size: 24pt;*/
+/*box-shadow: 0 0px 14px 4px #763626;*/
+/*}*/
+
+.searchBar button {
+  background-color: transparent;
+  margin-left: -60px;
+  position: absolute;
+  height: 70px;
+  border: none;
+  outline: none  ;
+  font-size: 24pt;
+}
+
+/*******/
+.moviesList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-top: 60px;
+}
+
+.movieBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*color: white;*/
+  margin: 10px 1%;
+  max-width: 340px;
+  background-color: #2A3132;
+  cursor: pointer;
+  box-shadow: 0 2px 3em #763626;
+}
+
+.movieDetails {
+  display: flex;
+  flex-direction: column;
+  /*justify-content: flex-start;*/
+  align-items: center;
+}
+
+
+.movieTitle {
+  width: 300px;
+  word-wrap: break-word;
+  text-align: center;
+}
+
+.image {
+  /*max-height:500px;*/
+  max-width: 340px;
 }
