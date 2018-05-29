@@ -6,9 +6,20 @@ const movieSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  productionYear: {
+  year: {
     type: String,
     required: true
+  },
+  rank: {
+    type: String,
+    required: true
+  },
+  imdbId: {
+    type: String,
+    required: true
+  },
+  imageURL: {
+    type: String
   }
 });
 

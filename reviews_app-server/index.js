@@ -5,6 +5,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const errorHandler = require("./handlers/error");
 const authRoutes = require("./routes/auth");
+const moviesRoutes = require('./routes/movies');
 const { loginRequired, ensureCorrectUser } = require("./middleware/auth");
 
 const PORT = 8081;
@@ -13,12 +14,15 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.use("/api/auth", authRoutes);
+app.use("/api/movies", moviesRoutes);
 // app.use(
 //   "/api/users/:id/movies",
 //   loginRequired,
 //   ensureCorrectUser,
 //   moviesRoutes
 // );
+
+
 
 app.use(function(req, res, next) {
   let err = new Error("Not Found");
