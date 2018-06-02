@@ -12,7 +12,6 @@ class SearchBar extends Component {
       <div className='searchBar'>
         <form>
           <input className='queryBox' type="text" placeholder='Find any movie...'/>
-          {/*<input type="submit" value='&#xf002;'/>*/}
           <button type='submit'><i className="fas fa-search"></i></button>
         </form>
       </div>

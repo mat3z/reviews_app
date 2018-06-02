@@ -5,6 +5,7 @@ import Homepage from '../components/Homepage';
 import AuthForm from '../components/AuthForm';
 import { authUser} from "../store/actions/auth";
 import { removeError} from "../store/actions/errors";
+import WatchMoviePageContainer from './WatchMoviePageContainer';
 
 const Main = props => {
   const { authUser, errors, removeError, currentUser } = props;
@@ -54,6 +55,17 @@ const Main = props => {
                 {...props}
               />
             );
+          }}
+        />
+        <Route
+          path='/movies/:id'
+          // component={WatchMoviePageContainer}
+          render={props => {
+            return(
+              <WatchMoviePageContainer
+                {...props}
+              />
+            )
           }}
         />
       </Switch>

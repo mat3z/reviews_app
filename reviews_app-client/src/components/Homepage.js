@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import MoviesList from '../containers/MoviesList'
+import MoviesListContainer from '../containers/MoviesListContainer'
 import SearchBar from '../containers/SearchBar';
 
 const Homepage = ({ currentUser }) => {
@@ -15,7 +15,7 @@ const Homepage = ({ currentUser }) => {
   return (
     <div>
       <SearchBar />
-      <MoviesList />
+      <MoviesListContainer />
     </div>
   )
 };

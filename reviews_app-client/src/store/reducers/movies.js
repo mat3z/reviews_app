@@ -1,10 +1,55 @@
-import { LOAD_MOVIES } from "../actionTypes";
+import { REQUEST_ALL_MOVIES, RECEIVE_ALL_MOVIES, REQUEST_MOVIE, RECEIVE_MOVIE } from "../actionTypes";
 
-export default (state=[], action) => {
+const initialState = {
+  chosenMovie: {
+    loading: false,
+    item: {}
+  },
+  movies: {
+    loading: false,
+    items: []
+  }
+};
+
+export default (state = initialState, action) => {
   switch (action.type) {
-    case LOAD_MOVIES:
-      return [...action.movies];
+    case REQUEST_MOVIE:
+      return {
+        ...state,
+        chosenMovie: {
+          ...state.chosenMovie,
+          loading: true
+        }
+      };
+    case RECEIVE_MOVIE:
+      return {
+        ...state,
+        chosenMovie: {
+          loading: false,
+          item: {...action.movie}
+        }
+      };
+    case REQUEST_ALL_MOVIES:
+      return {
+        ...state,
+        movies: {
+          ...state.movies,
+          loading: true
+        }
+      };
+    case RECEIVE_ALL_MOVIES:
+      return {
+        ...state,
+        movies: {
+          loading: false,
+          items: [...action.movies]
+        }
+      };
     default:
       return state;
   }
 };
+
+
+//TODO change reducer to be as in redux tutorial alike
+//TODO extract presentational components out of containers

@@ -23,6 +23,9 @@ class Navbar extends Component {
             (
               <ul className="navbarList">
                 <li>
+                  Hello, {this.props.currentUser.user.username}
+                </li>
+                <li>
                   <a onClick={this.logout}>LOG OUT</a>
                 </li>
               </ul>

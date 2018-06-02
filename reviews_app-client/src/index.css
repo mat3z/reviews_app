@@ -45,6 +45,7 @@ body {
   margin: 5px;
   border: 1px solid #90AFC5;
   /*border-radius: 6px;*/
+  transition: border .3s, color .3s;
 }
 
 .navbar a:hover {
@@ -179,7 +180,76 @@ body {
   text-align: center;
 }
 
-.image {
-  /*max-height:500px;*/
+.imageSize {
+  max-height:500px;
   max-width: 340px;
+}
+
+.imageShadow {
+  box-shadow: 0 2px 3em #763626;
+}
+
+/*LOADER*/
+
+.loader {
+  margin: 300px auto;
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+/*MOVIE PAGE*/
+
+.watchMoviePage {
+  margin: 140px 20% 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.movieInfoAndPoster {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.movieInfo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.watchPageMovieTitle {
+  font-size: 2em;
+  margin: 0 auto;
+  /*letter-spacing: -0.1em;*/
+}
+
+.watchPageMovieTitle > h1 {
+  padding-bottom: 5px;
+  border-style: solid;
+  border-width: 0 0 1px;
+  text-align: center;
+  align-items: center;
+}
+
+.productionYear {
+  font-size: 0.5em;
+  opacity: 0.7;
+  font-weight: lighter;
+}
+
+.movieScores {
+  margin-left: 100px;
+}
+
+hr {
+  width: 90%;
 }
