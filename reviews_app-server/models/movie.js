@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const User = require("./user");
+const Rate = require("./rate");
 
 const movieSchema = new mongoose.Schema({
   title: {
@@ -10,7 +10,7 @@ const movieSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  rank: {
+  imdbRank: {
     type: String,
     required: true
   },
@@ -20,7 +20,11 @@ const movieSchema = new mongoose.Schema({
   },
   imageURL: {
     type: String
-  }
+  },
+  rates: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Rate"
+  }]
 });
 
 const Movie = mongoose.model("Movie", movieSchema);

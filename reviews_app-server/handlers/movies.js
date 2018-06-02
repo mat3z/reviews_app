@@ -17,5 +17,3 @@ exports.fetchOneMovie = async function(req, res, next) {
     return next(err);
   }
 };
-
-exports.rateMovie = async function(req, res, next) {};

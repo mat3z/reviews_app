@@ -7,3 +7,4 @@ mongoose.connect("mongodb://localhost/reviews_app", {
 
 module.exports.User = require("./user");
 module.exports.Movie = require("./movie");
+module.exports.Rate = require("./rate");

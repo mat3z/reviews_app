@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+const Rate = require('./rate');
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -7,6 +8,10 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
+  rates: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Rate"
+  }],
   password: {
     type: String,
     required: true
