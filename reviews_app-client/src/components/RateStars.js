@@ -8,26 +8,25 @@ const RateStars = ({ rateMovie, movieId, rateGiven, alreadyRated }) => {
     rateMovie(newRating, movieId);
   };
 
+  const options = {
+    numberOfStars: 10,
+    starEmptyColor: '#90AFC5',
+    starHoverColor: '#763626',
+    starRatedColor: '#763626',
+    starDimension: '50px',
+    starSpacing: '5px'
+  };
+
   return (
     <div>
       { alreadyRated ?
         <StarRatings
-          numberOfStars={10}
-          starEmptyColor={'#90AFC5'}
-          starHoverColor={'#763626'}
-          starRatedColor={'#763626'}
-          starDimension={'50px'}
-          starSpacing={'5px'}
+          {...options}
           rating={rateGiven}
         /> :
         <StarRatings
-          numberOfStars={10}
+          {...options}
           changeRating={ratingChanged}
-          starEmptyColor={'#90AFC5'}
-          starHoverColor={'#763626'}
-          starRatedColor={'#763626'}
-          starDimension={'50px'}
-          starSpacing={'5px'}
         />
       }
     </div>
