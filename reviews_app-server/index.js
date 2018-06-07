@@ -14,13 +14,13 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.use("/api/auth", authRoutes);
-app.use("/api/movies", moviesRoutes);
-// app.use(
-//   "/api/users/:id/movies",
-//   loginRequired,
-//   ensureCorrectUser,
-//   moviesRoutes
-// );
+// app.use("/api/users/:id/movies", moviesRoutes);
+app.use(
+  "/api/users/:user_id/movies",
+  loginRequired,
+  // ensureCorrectUser,
+  moviesRoutes
+);
 
 
 

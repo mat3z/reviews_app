@@ -5,7 +5,6 @@ const WatchMoviePage = ({title, imageUrl, year, imdbRank}) => {
   const url = `http://image.tmdb.org/t/p/w500/${imageUrl}`;
 
 
-
   return (
   <div className="watchMoviePage">
     <div className="movieInfoAndPoster">

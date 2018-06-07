@@ -1,15 +1,43 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { rateMovie } from "../store/actions/movies";
+import StarRatings from 'react-star-ratings';
 
-const RateStars = props => {
-  const fullStar = (<i className="fas fa-star"></i>);
-  const emptyStar = (<i className="far fa-star"></i>);
-  const emptyStarsArr = Array(10).fill(emptyStar);
+const RateStars = ({ rateMovie, movieId, rateGiven, alreadyRated }) => {
+  const ratingChanged = newRating => {
+    rateMovie(newRating, movieId);
+  };
 
-  return(
-    <div style={{fontSize: '1.4em', padding: '5px'}}>
-      {emptyStarsArr}
+  return (
+    <div>
+      { alreadyRated ?
+        <StarRatings
+          numberOfStars={10}
+          starEmptyColor={'#90AFC5'}
+          starHoverColor={'#763626'}
+          starRatedColor={'#763626'}
+          starDimension={'50px'}
+          starSpacing={'5px'}
+          rating={rateGiven}
+        /> :
+        <StarRatings
+          numberOfStars={10}
+          changeRating={ratingChanged}
+          starEmptyColor={'#90AFC5'}
+          starHoverColor={'#763626'}
+          starRatedColor={'#763626'}
+          starDimension={'50px'}
+          starSpacing={'5px'}
+        />
+      }
     </div>
   )
 };
 
-export default RateStars;
+const mapStateToProps = state => ({
+  movieId: state.movies.chosenMovie.item._id,
+  alreadyRated: state.movies.chosenMovie.item.alreadyRated,
+  rateGiven: state.movies.chosenMovie.item.rateGiven
+});
+
+export default connect(mapStateToProps, { rateMovie })(RateStars);

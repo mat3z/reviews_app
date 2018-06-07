@@ -5,7 +5,9 @@ import MoviesList from '../components/MoviesList';
 
 class MoviesListContainer extends Component {
   componentDidMount() {
-    this.props.fetchAllMovies();
+    if(!this.props.movies.length) {
+      this.props.fetchAllMovies(this.props.currentUser);
+    }
   }
 
   render() {
@@ -25,7 +27,8 @@ class MoviesListContainer extends Component {
 
 const mapStateToProps = state => ({
   movies: state.movies.movies.items,
-  loading: state.movies.movies.loading
+  loading: state.movies.movies.loading,
+  currentUser: state.currentUser.user.id
 });
 
 export default connect(mapStateToProps, { fetchAllMovies })(MoviesListContainer);

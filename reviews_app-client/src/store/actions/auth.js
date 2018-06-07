@@ -27,6 +27,7 @@ export function authUser(type, userData) {
       return apiCall("post", `/api/auth/${type}`, userData)
         .then(({token, ...user}) => {
           localStorage.setItem('jwToken', token);
+          setAuthorizationToken(token);
           dispatch(setCurrentUser(user));
           dispatch(removeError());
           resolve();

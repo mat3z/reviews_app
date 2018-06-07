@@ -29,8 +29,17 @@ exports.login = async function(req, res, next) {
   try {
     let user = await db.User.findOne({
       username: req.body.username
+    }).populate({
+      path: 'rates',
+      populate: { path: 'movie'}
     });
-    let { id, username } = user;
+    let { id, username, rates } = user;
+
+    let ratesAndTitles = rates.map(rate => ({
+      rate: rate.rate,
+      title: rate.movie.title
+    }));
+
     let isMatch = await user.comparePassword(req.body.password);
     if (isMatch) {
       let token = jwt.sign(
@@ -43,7 +52,8 @@ exports.login = async function(req, res, next) {
       return res.status(200).json({
         id,
         username,
-        token
+        token,
+        rates: ratesAndTitles
       });
     } else {
       return next({

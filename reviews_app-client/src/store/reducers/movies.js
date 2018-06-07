@@ -1,4 +1,4 @@
-import { REQUEST_ALL_MOVIES, RECEIVE_ALL_MOVIES, REQUEST_MOVIE, RECEIVE_MOVIE } from "../actionTypes";
+import {REQUEST_ALL_MOVIES, RECEIVE_ALL_MOVIES, REQUEST_MOVIE, RECEIVE_MOVIE, MOVIE_RATED} from "../actionTypes";
 
 const initialState = {
   chosenMovie: {
@@ -26,7 +26,7 @@ export default (state = initialState, action) => {
         ...state,
         chosenMovie: {
           loading: false,
-          item: {...action.movie}
+          item: { ...action.movie }
         }
       };
     case REQUEST_ALL_MOVIES:
@@ -42,7 +42,19 @@ export default (state = initialState, action) => {
         ...state,
         movies: {
           loading: false,
-          items: [...action.movies]
+          items: [ ...action.movies ]
+        }
+      };
+    case MOVIE_RATED:
+      return {
+        ...state,
+        chosenMovie: {
+          ...state.chosenMovie,
+          item: {
+            ...state.chosenMovie.item,
+            alreadyRated: true,
+            rateGiven: action.rate
+          }
         }
       };
     default:
