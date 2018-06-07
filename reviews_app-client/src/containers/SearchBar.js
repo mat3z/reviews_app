@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { searchForMovie } from "../store/actions/movies";
 
 class SearchBar extends Component {
-  constructor(props){
-    super(props);
-  }
+  handleChange = e => {
+    this.props.searchForMovie(e.target.value);
+  };
+
 
   render() {
-    const { movies } = this.props;
     return (
       <div className='searchBar'>
         <form>
-          <input className='queryBox' type="text" placeholder='Find any movie...'/>
+          <input
+            className='queryBox'
+            type="text"
+            placeholder='Find any movie...'
+            name='filterString'
+            onChange={this.handleChange}
+          />
           <button type='submit'><i className="fas fa-search"></i></button>
         </form>
       </div>
@@ -25,4 +32,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(SearchBar);
+export default connect(mapStateToProps, { searchForMovie })(SearchBar);

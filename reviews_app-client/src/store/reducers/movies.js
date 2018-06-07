@@ -1,6 +1,7 @@
-import {REQUEST_ALL_MOVIES, RECEIVE_ALL_MOVIES, REQUEST_MOVIE, RECEIVE_MOVIE, MOVIE_RATED} from "../actionTypes";
+import {REQUEST_ALL_MOVIES, RECEIVE_ALL_MOVIES, REQUEST_MOVIE, RECEIVE_MOVIE, MOVIE_RATED, TYPING_MOVIE_TITLE} from "../actionTypes";
 
 const initialState = {
+  filterString: '',
   chosenMovie: {
     loading: false,
     item: {}
@@ -56,6 +57,11 @@ export default (state = initialState, action) => {
             rateGiven: action.rate
           }
         }
+      };
+    case TYPING_MOVIE_TITLE:
+      return {
+        ...state,
+        filterString: action.title
       };
     default:
       return state;

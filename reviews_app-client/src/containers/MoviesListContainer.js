@@ -11,7 +11,7 @@ class MoviesListContainer extends Component {
   }
 
   render() {
-    const { movies, loading } = this.props;
+    const { movies, loading, filterString } = this.props;
 
     if (loading) {
       return <div className="loader"></div>;
@@ -19,7 +19,7 @@ class MoviesListContainer extends Component {
 
     return (
       <div>
-        <MoviesList list={movies}/>
+        <MoviesList list={movies} filterString={filterString}/>
       </div>
     );
   }
@@ -28,7 +28,8 @@ class MoviesListContainer extends Component {
 const mapStateToProps = state => ({
   movies: state.movies.movies.items,
   loading: state.movies.movies.loading,
-  currentUser: state.currentUser.user.id
+  currentUser: state.currentUser.user.id,
+  filterString: state.movies.filterString
 });
 
 export default connect(mapStateToProps, { fetchAllMovies })(MoviesListContainer);

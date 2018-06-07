@@ -1,6 +1,6 @@
 import { apiCall } from "../../services/api";
 import { addError } from "./errors";
-import {REQUEST_ALL_MOVIES, RECEIVE_ALL_MOVIES, REQUEST_MOVIE, RECEIVE_MOVIE, MOVIE_RATED} from "../actionTypes";
+import {REQUEST_ALL_MOVIES, RECEIVE_ALL_MOVIES, REQUEST_MOVIE, RECEIVE_MOVIE, MOVIE_RATED, TYPING_MOVIE_TITLE} from "../actionTypes";
 
 const requestMovie = () => ({
   type: REQUEST_MOVIE
@@ -23,6 +23,11 @@ const receiveAllMovies = movies => ({
 const doRating = rate => ({
   type: MOVIE_RATED,
   rate
+});
+
+const typeTitle = title => ({
+  type: TYPING_MOVIE_TITLE,
+  title
 });
 
 export const fetchMovie = movieId => (dispatch, getState) => {
@@ -50,4 +55,8 @@ export const rateMovie = (rate, movieId) => (dispatch, getState) => {
   return apiCall('post', `/api/users/${userId}/movies/${movieId}`, { rate })
     .then(res => dispatch(doRating(res.rate)))
     .catch(err => dispatch(addError(err.message)))
+};
+
+export const searchForMovie = title => {
+  return dispatch => dispatch(typeTitle(title));
 };
