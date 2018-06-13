@@ -166,6 +166,11 @@ body {
   box-shadow: 0 2px 3em #763626;
 }
 
+.movieBox a {
+  color: #90AFC5;
+  text-decoration: none;
+}
+
 .movieDetails {
   display: flex;
   flex-direction: column;
@@ -252,4 +257,28 @@ body {
 
 hr {
   width: 90%;
+}
+
+.reviewsBox {
+
+}
+
+.reviewsBoxButton {
+  background-color: transparent;
+  font-weight: bold;
+  font-size: 22px;
+  color: #90AFC5;
+  /*color: #bdc3c7;*/
+  text-decoration: none;
+  padding: 12px;
+  margin: 5px;
+  border: 1px solid #90AFC5;
+  /*border-radius: 6px;*/
+  transition: border .3s, color .3s
+}
+
+.reviewsBoxButton:hover {
+  color: white;
+  cursor: pointer;
+  border: 1px solid white;
 }
