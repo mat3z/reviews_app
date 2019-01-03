@@ -1,53 +1,78 @@
 import { apiCall } from "../../services/api";
 import { addError } from "./errors";
-import {REQUEST_ALL_MOVIES, RECEIVE_ALL_MOVIES, REQUEST_MOVIE, RECEIVE_MOVIE, MOVIE_RATED} from "../actionTypes";
+import {
+	REQUEST_ALL_MOVIES,
+	RECEIVE_ALL_MOVIES,
+	REQUEST_MOVIE,
+	RECEIVE_MOVIE,
+	REQUEST_RECOMMENDED_MOVIES,
+	RECEIVE_RECOMMENDED_MOVIES,
+	MOVIE_RATED
+} from "../actionTypes";
 
 const requestMovie = () => ({
-  type: REQUEST_MOVIE
+	type: REQUEST_MOVIE
 });
 
 const receiveMovie = movie => ({
-  type: RECEIVE_MOVIE,
-  movie
+	type: RECEIVE_MOVIE,
+	movie
 });
 
 const requestAllMovies = () => ({
-  type: REQUEST_ALL_MOVIES
+	type: REQUEST_ALL_MOVIES
 });
 
 const receiveAllMovies = movies => ({
-  type: RECEIVE_ALL_MOVIES,
-  movies
+	type: RECEIVE_ALL_MOVIES,
+	movies
+});
+
+const requestRecommendedMovies = () => ({
+	type: REQUEST_RECOMMENDED_MOVIES
+});
+
+const receiveRecommendedMovies = movies => ({
+	type: RECEIVE_RECOMMENDED_MOVIES,
+	movies
 });
 
 const doRating = rate => ({
-  type: MOVIE_RATED,
-  rate
+	type: MOVIE_RATED,
+	rate
 });
 
 export const fetchMovie = movieId => (dispatch, getState) => {
-  let { currentUser }= getState();
-  const userId = currentUser.user.id;
-  dispatch(requestMovie());
-  return apiCall('get', `/api/users/${userId}/movies/${movieId}`)
-    .then(res => dispatch(receiveMovie(res)))
-    .catch(err => dispatch(addError(err.message)))
+	let { currentUser } = getState();
+	const userId = currentUser.user.id;
+	dispatch(requestMovie());
+	return apiCall("get", `/api/users/${userId}/movies/${movieId}`)
+		.then(res => dispatch(receiveMovie(res)))
+		.catch(err => dispatch(addError(err.message)));
+};
+
+export const fetchRecommendedMovies = userId => {
+	return dispatch => {
+		dispatch(requestRecommendedMovies());
+		return apiCall("get", `/api/users/${userId}/movies/recommended`)
+			.then(res => dispatch(receiveRecommendedMovies(res)))
+			.catch(err => dispatch(addError(err.message)));
+	};
 };
 
 export const fetchAllMovies = userId => {
-  return dispatch => {
-    dispatch(requestAllMovies());
-    return apiCall('get', `/api/users/${userId}/movies/all`)
-      .then(res => dispatch(receiveAllMovies(res)))
-      .catch(err => dispatch(addError(err.message)))
-  }
+	return dispatch => {
+		dispatch(requestAllMovies());
+		return apiCall("get", `/api/users/${userId}/movies/all`)
+			.then(res => dispatch(receiveAllMovies(res)))
+			.catch(err => dispatch(addError(err.message)));
+	};
 };
 
-
 export const rateMovie = (rate, movieId) => (dispatch, getState) => {
-  let { currentUser } = getState();
-  const userId = currentUser.user.id;
-  return apiCall('post', `/api/users/${userId}/movies/${movieId}`, { rate })
-    .then(res => dispatch(doRating(res.rate)))
-    .catch(err => dispatch(addError(err.message)))
+	let { currentUser } = getState();
+	const userId = currentUser.user.id;
+	return apiCall("post", `/api/users/${userId}/movies/${movieId}`, { rate })
+		.then(res => dispatch(doRating(res.rate)))
+		.catch(err => dispatch(addError(err.message)));
 };

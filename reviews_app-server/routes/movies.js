@@ -1,10 +1,16 @@
-const express = require('express');
-const router = express.Router({mergeParams: true});
+const express = require("express");
+const router = express.Router({ mergeParams: true });
 
-const { fetchAllMovies, fetchOneMovie } = require('../handlers/movies');
-const { rateMovie } = require('../handlers/rates');
+const {
+	fetchAllMovies,
+	fetchOneMovie,
+	fetchRecommendedMovies
+} = require("../handlers/movies");
 
-router.get('/all', fetchAllMovies);
-router.get('/:movie_id', fetchOneMovie);
-router.post('/:movie_id', rateMovie);
+const { rateMovie } = require("../handlers/rates");
+
+router.get("/recommended", fetchRecommendedMovies);
+router.get("/all", fetchAllMovies);
+router.get("/:movie_id", fetchOneMovie);
+router.post("/:movie_id", rateMovie);
 module.exports = router;
