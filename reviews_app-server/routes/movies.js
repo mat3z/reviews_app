@@ -9,7 +9,8 @@ const {
 
 const { rateMovie } = require("../handlers/rates");
 
-router.get("/recommended", fetchRecommendedMovies);
+router.get("/recommendedByReviews", fetchRecommendedMovies);
+router.get("/recommendedByRates", fetchRecommendedMovies);
 router.get("/all", fetchAllMovies);
 router.get("/:movie_id", fetchOneMovie);
 router.post("/:movie_id", rateMovie);

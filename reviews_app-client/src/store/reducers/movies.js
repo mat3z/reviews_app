@@ -1,11 +1,13 @@
 import {
-	REQUEST_ALL_MOVIES,
-	RECEIVE_ALL_MOVIES,
-	REQUEST_MOVIE,
-	RECEIVE_MOVIE,
-	REQUEST_RECOMMENDED_MOVIES,
-	RECEIVE_RECOMMENDED_MOVIES,
-	MOVIE_RATED
+  REQUEST_ALL_MOVIES,
+  RECEIVE_ALL_MOVIES,
+  REQUEST_MOVIE,
+  RECEIVE_MOVIE,
+  REQUEST_RECOMMENDED_MOVIES_BY_REVIEWS,
+  RECEIVE_RECOMMENDED_MOVIES_BY_REVIEWS,
+  REQUEST_RECOMMENDED_MOVIES_BY_RATES,
+  RECEIVE_RECOMMENDED_MOVIES_BY_RATES,
+  MOVIE_RATED, SET_MOVIE
 } from "../actionTypes";
 
 const initialState = {
@@ -17,10 +19,14 @@ const initialState = {
 		loading: false,
 		items: []
 	},
-	recommendedMovies: {
+	recommendedMoviesByReviews: {
 		loading: false,
 		items: []
-	}
+	},
+  recommendedMoviesByRates: {
+    loading: false,
+    items: []
+  }
 };
 
 export default (state = initialState, action) => {
@@ -59,22 +65,39 @@ export default (state = initialState, action) => {
 				}
 			};
 
-		case REQUEST_RECOMMENDED_MOVIES:
+		case REQUEST_RECOMMENDED_MOVIES_BY_REVIEWS:
 			return {
 				...state,
-				recommendedMovies: {
+				recommendedMoviesByReviews: {
 					...state.movies,
 					loading: true
 				}
 			};
-		case RECEIVE_RECOMMENDED_MOVIES:
+		case RECEIVE_RECOMMENDED_MOVIES_BY_REVIEWS:
 			return {
 				...state,
-				recommendedMovies: {
+				recommendedMoviesByReviews: {
 					loading: false,
 					items: [...action.movies]
 				}
 			};
+
+    case REQUEST_RECOMMENDED_MOVIES_BY_RATES:
+      return {
+        ...state,
+        recommendedMoviesByRates: {
+          ...state.movies,
+          loading: true
+        }
+      };
+    case RECEIVE_RECOMMENDED_MOVIES_BY_RATES:
+      return {
+        ...state,
+        recommendedMoviesByRates: {
+          loading: false,
+          items: [...action.movies]
+        }
+      };
 
 		case MOVIE_RATED:
 			return {
@@ -88,6 +111,18 @@ export default (state = initialState, action) => {
 					}
 				}
 			};
+
+		// case SET_MOVIE:
+		// 	return {
+		// 		...state,
+		// 		chosenMovie: {
+		// 			...state.chosenMovie,
+		// 			item: {
+     //        loading: false,
+     //        item: { ...action.movie }
+		// 			}
+		// 		}
+		// 	};
 		default:
 			return state;
 	}
