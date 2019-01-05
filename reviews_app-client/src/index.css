@@ -27,6 +27,7 @@ body {
   background-color: #2A3132;
   height: 70px;
   box-shadow: 0 0 2em #763626;
+  z-index: 10;
 }
 
 .navbar ul {
@@ -147,11 +148,16 @@ body {
 }
 
 /*******/
-.moviesList {
+.moviesHomepageList {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin-top: 60px;
+}
+
+.recommendationsList {
+  display: flex;
+
 }
 
 .movieBox {
@@ -192,6 +198,51 @@ body {
 
 .imageShadow {
   box-shadow: 0 2px 3em #763626;
+}
+
+.movieBoxRecommendations {
+  /*display: flex;*/
+  position: relative;
+  padding: 1vw;
+  opacity: 0.8;
+}
+
+.movieBoxRecommendations:hover {
+  opacity: 1;
+}
+
+
+.movieDetailsRecommendations {
+  /*position: absolute;*/
+  /*bottom: 30px;*/
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+
+  font-size: 1.1em;
+  color: white;
+  text-shadow: 2px 2px #222222;
+
+  /*display: flex;*/
+  /*flex-direction: column;*/
+  /*!*justify-content: flex-start;*!*/
+  /*align-items: center;*/
+}
+
+.movieTitleRecommendations {
+  /*width: 300px;*/
+  /*word-wrap: break-word;*/
+  /*text-align: center;*/
+}
+
+.imageSizeRecommendations {
+  /*max-height:500px;*/
+  /*max-width: 340px;*/
+  max-width: 10vw;
+  /*max-height: 20vh;*/
 }
 
 /*LOADER*/

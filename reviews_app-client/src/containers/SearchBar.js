@@ -7,7 +7,6 @@ class SearchBar extends Component {
     this.props.searchForMovie(e.target.value);
   };
 
-
   render() {
     return (
       <div className='searchBar'>
@@ -26,10 +25,4 @@ class SearchBar extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    movies: state.movies
-  }
-}
-
-export default connect(mapStateToProps, { searchForMovie })(SearchBar);
+export default connect(null, { searchForMovie })(SearchBar);

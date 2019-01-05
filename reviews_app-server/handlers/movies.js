@@ -58,3 +58,23 @@ exports.fetchOneMovie = async function(req, res, next) {
     return next(err);
   }
 };
+
+exports.fetchRecommendedMovies = async function(req, res, next) {
+  try {
+
+
+    let moviesList = [];
+
+    for (let i = 0; i < 5; i++) {
+      let count = await db.Movie.count();
+      let rand = Math.floor(Math.random() * count);
+      let randomMovie = await db.Movie.findOne().skip(rand);
+      moviesList.push(randomMovie);
+    }
+
+    return res.status(200).json(moviesList);
+    ;
+  } catch (err) {
+    return next(err);
+  }
+};

@@ -19,7 +19,7 @@ class MoviesListContainer extends Component {
 
     return (
       <div>
-        <MoviesList list={movies} filterString={filterString}/>
+        <MoviesList list={movies} filterString={filterString} origin={'moviesHomepageList'}/>
       </div>
     );
   }
