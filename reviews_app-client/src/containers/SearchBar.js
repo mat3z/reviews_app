@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import { searchForMovie } from "../store/actions/movies";
 
 class SearchBar extends Component {
+  componentDidMount() {
+    this.props.searchForMovie("");
+  }
+
   handleChange = e => {
     this.props.searchForMovie(e.target.value);
   };
@@ -16,6 +20,7 @@ class SearchBar extends Component {
             type="text"
             placeholder='Find any movie...'
             name='filterString'
+            value={this.props.filterString}
             onChange={this.handleChange}
           />
           <button type='submit'><i className="fas fa-search"></i></button>
@@ -25,4 +30,7 @@ class SearchBar extends Component {
   }
 }
 
-export default connect(null, { searchForMovie })(SearchBar);
+const mapStateToProps = state => ({
+  filterString: state.movies.filterString
+});
+export default connect(mapStateToProps, { searchForMovie })(SearchBar);
