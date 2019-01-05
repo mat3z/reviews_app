@@ -8,12 +8,6 @@ class WatchMoviePageContainer extends Component {
     this.props.fetchMovie(this.props.match.params.id);
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.match.params.id !== this.props.match.params.id) {
-      this.props.fetchMovie(this.props.match.params.id);
-    }
-  }
-
   render() {
     const { movie, loading } = this.props;
 
@@ -23,7 +17,7 @@ class WatchMoviePageContainer extends Component {
 
     return (
       <div>
-        <WatchMoviePage />
+        <WatchMoviePage {...movie}/>
       </div>
     )
   }

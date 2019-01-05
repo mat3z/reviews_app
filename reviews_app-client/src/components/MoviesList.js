@@ -1,17 +1,18 @@
 import React from 'react';
 import MovieItem from './MovieItem';
 
-const MoviesList = ({ list, origin }) => {
-  const moviesList = list.map(movie => (
-    <MovieItem
-      key={movie._id}
-      origin={origin}
-      {...movie}
-    />
-  ));
+const MoviesList = ({ list, filterString }) => {
+  const moviesList = list
+    .filter(movie => movie.title.toLowerCase().includes(filterString.toLowerCase()))
+    .map(movie => (
+      <MovieItem
+        key={movie._id}
+        {...movie}
+      />
+    ));
 
   return (
-    <div className={origin}>
+    <div className='moviesList'>
       {moviesList}
     </div>
   )

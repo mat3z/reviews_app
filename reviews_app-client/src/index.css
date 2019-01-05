@@ -27,7 +27,6 @@ body {
   background-color: #2A3132;
   height: 70px;
   box-shadow: 0 0 2em #763626;
-  z-index: 10;
 }
 
 .navbar ul {
@@ -148,16 +147,11 @@ body {
 }
 
 /*******/
-.moviesHomepageList {
+.moviesList {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin-top: 60px;
-}
-
-.recommendationsList {
-  display: flex;
-
 }
 
 .movieBox {
@@ -170,6 +164,11 @@ body {
   background-color: #2A3132;
   cursor: pointer;
   box-shadow: 0 2px 3em #763626;
+}
+
+.movieBox a {
+  color: #90AFC5;
+  text-decoration: none;
 }
 
 .movieDetails {
@@ -191,56 +190,9 @@ body {
   max-width: 340px;
 }
 
-
 .imageShadow {
   box-shadow: 0 2px 3em #763626;
 }
-
-.movieBoxRecommendations {
-  /*display: flex;*/
-  position: relative;
-  padding: 1vw;
-  opacity: 0.8;
-}
-
-.movieBoxRecommendations:hover {
-  opacity: 1;
-}
-
-
-.movieDetailsRecommendations {
-  /*position: absolute;*/
-  /*bottom: 30px;*/
-
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-
-  font-size: 1.1em;
-  color: white;
-  text-shadow: 2px 2px #222222;
-
-  /*display: flex;*/
-  /*flex-direction: column;*/
-  /*!*justify-content: flex-start;*!*/
-  /*align-items: center;*/
-}
-
-.movieTitleRecommendations {
-  /*width: 300px;*/
-  /*word-wrap: break-word;*/
-  /*text-align: center;*/
-}
-
-.imageSizeRecommendations {
-  /*max-height:500px;*/
-  /*max-width: 340px;*/
-  max-width: 10vw;
-  /*max-height: 20vh;*/
-}
-
 
 /*LOADER*/
 
@@ -297,7 +249,6 @@ body {
   font-size: 0.5em;
   opacity: 0.7;
   font-weight: lighter;
-  /*z-index: -10;*/
 }
 
 .movieScores {
@@ -306,4 +257,28 @@ body {
 
 hr {
   width: 90%;
+}
+
+.reviewsBox {
+
+}
+
+.reviewsBoxButton {
+  background-color: transparent;
+  font-weight: bold;
+  font-size: 22px;
+  color: #90AFC5;
+  /*color: #bdc3c7;*/
+  text-decoration: none;
+  padding: 12px;
+  margin: 5px;
+  border: 1px solid #90AFC5;
+  /*border-radius: 6px;*/
+  transition: border .3s, color .3s
+}
+
+.reviewsBoxButton:hover {
+  color: white;
+  cursor: pointer;
+  border: 1px solid white;
 }
