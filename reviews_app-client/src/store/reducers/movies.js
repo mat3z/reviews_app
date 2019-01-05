@@ -1,4 +1,15 @@
-import {REQUEST_ALL_MOVIES, RECEIVE_ALL_MOVIES, REQUEST_MOVIE, RECEIVE_MOVIE, MOVIE_RATED, TYPING_MOVIE_TITLE} from "../actionTypes";
+import {
+  REQUEST_ALL_MOVIES,
+  RECEIVE_ALL_MOVIES,
+  REQUEST_MOVIE,
+  RECEIVE_MOVIE,
+  REQUEST_RECOMMENDED_MOVIES_BY_REVIEWS,
+  RECEIVE_RECOMMENDED_MOVIES_BY_REVIEWS,
+  REQUEST_RECOMMENDED_MOVIES_BY_RATES,
+  RECEIVE_RECOMMENDED_MOVIES_BY_RATES,
+  MOVIE_RATED, SET_MOVIE,
+  TYPING_MOVIE_TITLE
+} from "../actionTypes";
 
 const initialState = {
   filterString: '',
@@ -7,6 +18,14 @@ const initialState = {
     item: {}
   },
   movies: {
+    loading: false,
+    items: []
+  },
+  recommendedMoviesByReviews: {
+    loading: false,
+    items: []
+  },
+  recommendedMoviesByRates: {
     loading: false,
     items: []
   }
@@ -30,6 +49,7 @@ export default (state = initialState, action) => {
           item: { ...action.movie }
         }
       };
+
     case REQUEST_ALL_MOVIES:
       return {
         ...state,
@@ -43,9 +63,44 @@ export default (state = initialState, action) => {
         ...state,
         movies: {
           loading: false,
-          items: [ ...action.movies ]
+          items: [...action.movies]
         }
       };
+
+    case REQUEST_RECOMMENDED_MOVIES_BY_REVIEWS:
+      return {
+        ...state,
+        recommendedMoviesByReviews: {
+          ...state.movies,
+          loading: true
+        }
+      };
+    case RECEIVE_RECOMMENDED_MOVIES_BY_REVIEWS:
+      return {
+        ...state,
+        recommendedMoviesByReviews: {
+          loading: false,
+          items: [...action.movies]
+        }
+      };
+
+    case REQUEST_RECOMMENDED_MOVIES_BY_RATES:
+      return {
+        ...state,
+        recommendedMoviesByRates: {
+          ...state.movies,
+          loading: true
+        }
+      };
+    case RECEIVE_RECOMMENDED_MOVIES_BY_RATES:
+      return {
+        ...state,
+        recommendedMoviesByRates: {
+          loading: false,
+          items: [...action.movies]
+        }
+      };
+
     case MOVIE_RATED:
       return {
         ...state,
@@ -58,16 +113,28 @@ export default (state = initialState, action) => {
           }
         }
       };
+
     case TYPING_MOVIE_TITLE:
       return {
         ...state,
         filterString: action.title
       };
+
+    // case SET_MOVIE:
+    // 	return {
+    // 		...state,
+    // 		chosenMovie: {
+    // 			...state.chosenMovie,
+    // 			item: {
+    //        loading: false,
+    //        item: { ...action.movie }
+    // 			}
+    // 		}
+    // 	};
     default:
       return state;
   }
 };
-
 
 //TODO change reducer to be as in redux tutorial alike
 //TODO extract presentational components out of containers
